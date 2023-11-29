@@ -1,0 +1,19 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'flyctl auth'
+description: 'flyctl auth'
+
+inputs:
+  command:
+    description: 'command'
+    default: docker
+  
+runs:
+  using: composite
+  steps:
+    - id: flyctl-auth
+      name: Login to Fly.io registry
+      uses: docker://darinpope/flyctl:0.1.129
+      shell: sh
+      run: |
+        flyctl auth ${{ inputs.command }}
