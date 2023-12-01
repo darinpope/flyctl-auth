@@ -22,5 +22,6 @@ runs:
         FLY_API_TOKEN: ${{ inputs.fly-api-token }}
         NO_COLOR: "1"
       run: |
+        whoami
         echo $FLY_API_TOKEN
         flyctl auth ${{ inputs.command }}
